@@ -1,8 +1,5 @@
-package atividade2;
-/*
- * @author valmir
- */
- public class Node{
+package lselista2;
+public class Node{
     private Produto info;
     private Node prox;
     
