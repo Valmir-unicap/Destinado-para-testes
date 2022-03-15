@@ -1,8 +1,5 @@
-package atividade2;
-/*
- * @author valmir
- */
-public class Produto implements Comparable <Produto>{//compara se tem iguala
+package lselista2;
+    public class Produto implements Comparable <Produto>{//compara se tem iguala
     private String codigo;
     private String descricao;
     private double preco;
@@ -37,9 +34,9 @@ public class Produto implements Comparable <Produto>{//compara se tem iguala
     }
     @Override
     public int compareTo(Produto p) {
-        return this.codigo.compareTo(codigo);
+        return this.codigo.compareTo(this.codigo);
     }
     public String toString(){
-        return "O Codigo: "+ this.codigo+ ", descrição: "+ this.descricao+ ", do preço: "+ this.preco+ ", possui no estoque: "+this.estoque+ "quantidades";
+        return "O Codigo: "+this.codigo+ ", descrição: "+this.descricao+ ", do preço: "+this.preco+ ", possui no estoque: "+this.estoque+" unidades";
     }
 }
