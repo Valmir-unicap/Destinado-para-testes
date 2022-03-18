@@ -55,9 +55,17 @@ public class Lista2LSE {
                     break;
                     
                 case 6://exibir dados de um único produto
+                    in.nextLine();
+                    System.out.print("Digite o codigo do Produto: ");
+                    codigo= in.nextLine();
+                    lista2.exibirProduto(codigo);
                     break;
                     
                 case 7://deve fazer uma busca com o codigo, pra assim poder alterar
+                    in.nextLine();
+                    System.out.print("Digite o codigo do produto: ");
+                    codigo= in.nextLine();
+                    lista2.alterarInfo(codigo);
                     break;
                     
                 case 0:
@@ -70,16 +78,16 @@ public class Lista2LSE {
             }
         }while(escolha!=0);
     }
-public static void menu(){
-    System.out.println("Menu de opções");
-    System.out.println("1 - Inserir um novo produto no início da lista"); //feito em aula
-    System.out.println("2 - Remover o primeiro produto da lista");
-    System.out.println("3 - Inserir um novo produto no final da lista");
-    System.out.println("4 - Remover último produto da lista");
-    System.out.println("5 - Exibir todos produto da lista");//feito em aula
-    System.out.println("6 - Exibir os dados de um produto da lista");
-    System.out.println("7 - Alterar os dados de um produto da lista");
-    System.out.println("0 - Sair do programa!");
-}
+    public static void menu(){
+        System.out.println("Menu de opções");
+        System.out.println("1 - Inserir um novo produto no início da lista"); //feito em aula
+        System.out.println("2 - Remover o primeiro produto da lista");
+        System.out.println("3 - Inserir um novo produto no final da lista");
+        System.out.println("4 - Remover último produto da lista");
+        System.out.println("5 - Exibir todos produto da lista");//feito em aula
+        System.out.println("6 - Exibir os dados de um produto da lista");
+        System.out.println("7 - Alterar os dados de um produto da lista");
+        System.out.println("0 - Sair do programa!");
+        }
 
-} 
+    } 
