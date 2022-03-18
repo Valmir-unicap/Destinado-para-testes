@@ -1,6 +1,6 @@
-package lselista2;
+package lista2lse;
 import java.util.Scanner;
-public class LSELista2 {
+public class Lista2LSE {
     public static void main(String[] args) {
         Scanner in= new Scanner(System.in);
         LSEComDescritor lista2= new LSEComDescritor();
