@@ -1,5 +1,7 @@
-package lselista2;
+package lista2lse;
+import java.util.Scanner;
 public class LSEComDescritor {
+    Scanner in= new Scanner(System.in);
     private Node primeiro;
     private Node ultimo;
     private int qtd;
@@ -13,20 +15,25 @@ public class LSEComDescritor {
     }
     public void InserirInicio(Produto p){
         Node novo= new Node(p);
-       // boolean procura;
+        Node aux;     
         if(this.IsEmpty()==true){
             System.out.println("Lista Vázia!");
             this.primeiro= novo;
             this.ultimo= novo;
             this.qtd++;
             System.out.println("Inserção efetuada!");
-        }else{        
-            novo.setProx(this.primeiro);
-            this.primeiro= novo;
-            this.qtd++;     
-            System.out.println("Inserção efetuada!");
+        }else{     
+            aux= this.busca(p.getCodigo());
+            if(aux==null){
+                novo.setProx(this.primeiro);
+                this.primeiro= novo;
+                this.qtd++;     
+                System.out.println("Inserção efetuada!");
+                }else{
+                    System.out.println("Valor repetido! Inserção não efetuada!");
             }
         }
+    }
     public void InserirFinal(Produto p){//falta fazer comparação
         Node novo= new Node(p);
         Node aux;
@@ -37,10 +44,15 @@ public class LSEComDescritor {
             this.qtd++;
             System.out.println("Inserção efetuada!");
         }else{
-            this.ultimo.setProx(novo);
-            this.ultimo= novo;
-            this.qtd++;
-            System.out.println("Inserção efetuada!");
+            aux= this.busca(p.getCodigo());
+            if(aux==null){
+                this.ultimo.setProx(novo);
+                this.ultimo= novo;
+                this.qtd++;
+                System.out.println("Inserção efetuada!");
+            }else{
+                System.out.println("Valor repetido! Inserção não efetuada!");
+            }
         }
     }   
     public void exibirTudo(){
@@ -87,44 +99,45 @@ public class LSEComDescritor {
             System.out.println("Remoção efetuada! ");
         }
     }
-}
-  /* private Node buscaSimples(Produto p){
+    private Node busca(String codigo){
         Node aux;
-        if(this.qtd==0){
+        if(this.IsEmpty()==true){
             return null;
         }else{
-            aux= this.primeiro;
-            while(aux!=null){
-                if(aux.getInfo().compareTo(p)==0){
-                    return aux;
-                }
-                aux= aux.getProx();
-            }
+           Produto procura= new Produto(codigo);
+           aux= this.primeiro;
+           while(aux!=null){
+               if(aux.getInfo().equals(procura)==true){
+                   return aux;//retorna endereço do nó
+               }else{
+                   aux= aux.getProx(); //continua procurando se tem repetido
+               }
+           } 
         }
-        return null;
+        return null;//lista vazia ou se não encontrar repetido
     }
-    public Produto busca(Produto p){
-        Node pos;
-        pos=this.buscaSimples(p);
-            if(pos==null){
-                return null;
-        }else{
-                return pos.getInfo();
-            }
-    }
-    public boolean procura(Produto p){
+    public void alterarInfo(String codigo){
         Node aux;
-        if(this.qtd==0){
-            return false;
+        aux= this.busca(codigo);
+        String descricao;
+        double preco;
+        int estoque;
+        Produto p;//variavel de referencia
+        if(aux==null){
+            System.out.println("Produto não existe!");
         }else{
-            aux= this.primeiro;
-            while(aux!=null){
-                if(aux.getInfo().compareTo(p)==0){
-                    return true;
-                }else{
-                    aux= aux.getProx();  
-                }
-            }
-            return false;
+            p= aux.getInfo();
+            in.nextLine();
+            System.out.println("Produto encontrado!");
+            System.out.print("Digite o nova descrição do produto: ");
+            descricao= in.nextLine();
+            p.setDescricao(descricao);
+            System.out.print("Digite o novo preço do prodeuto: ");
+            preco= in.nextDouble();
+            p.setPreco(preco);
+            System.out.print("Digite a novo quantidade presente no estoque: ");
+            estoque= in.nextInt();
+            p.setEstoque(estoque);
         }
-    }*/
+    }
+}
