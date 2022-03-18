@@ -1,5 +1,5 @@
-package lselista2;
-public class Node{
+package lista2lse;
+public class Node {
     private Produto info;
     private Node prox;
     
