@@ -44,8 +44,8 @@ public class LSEComDescritor {
             this.qtd++;
             System.out.println("Inserção efetuada!");
         }else{
-            aux= this.busca(p.getCodigo());
-            if(aux==null){
+            aux= this.busca(p.getCodigo());//
+            if(aux==null){//não tem repetido
                 this.ultimo.setProx(novo);
                 this.ultimo= novo;
                 this.qtd++;
@@ -127,17 +127,25 @@ public class LSEComDescritor {
             System.out.println("Produto não existe!");
         }else{
             p= aux.getInfo();
-            in.nextLine();
             System.out.println("Produto encontrado!");
-            System.out.print("Digite o nova descrição do produto: ");
-            descricao= in.nextLine();
-            p.setDescricao(descricao);
-            System.out.print("Digite o novo preço do prodeuto: ");
+            System.out.print("Digite o novo preço do produto: ");
             preco= in.nextDouble();
             p.setPreco(preco);
             System.out.print("Digite a novo quantidade presente no estoque: ");
             estoque= in.nextInt();
             p.setEstoque(estoque);
+            System.out.println("Alteração realizada com sucesso!");
+        }
+    }
+    public void exibirProduto(String codigo){
+        Node aux;
+        aux= this.busca(codigo);
+        Produto p;
+        if(aux==null){
+            System.out.println("Produto não existe!");
+        }else{
+            p= aux.getInfo();
+            System.out.println(p);
         }
     }
 }
